@@ -1,6 +1,5 @@
-Unexpected var, use let or const instead
-Expected '===' and instead saw '=='
-'c' is not defined
-Unary operator '++' used
-Return statement should not contain assignment
-'d' is not defined
+запрещено использовать var
+используйте строгое сравнение
+найдены необъявленные переменные
+не используйте ++ оператор
+не используйте присваивание в return
