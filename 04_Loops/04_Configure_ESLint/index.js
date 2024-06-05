@@ -13,9 +13,3 @@ function run() {
 }
 
 run();
-// Unexpected var, use let or const instead
-// Expected '===' and instead saw '=='
-// 'c' is not defined
-// Unary operator '++' used
-// Return statement should not contain assignment
-// 'd' is not defined
