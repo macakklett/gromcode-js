@@ -1,6 +1,5 @@
 const cleanTransactionsList = arr => {
   return arr
-    .map(el => el.trim())
     .filter(el => !isNaN(+el) && el !== '')
     .map(el => `$${Number.parseFloat(el).toFixed(2)}`);
 };
