@@ -1,18 +1,19 @@
-'use strict';
+function getOwnProps(obj) {
+  const arrProps = [];
 
-// put your code here
-const vehicle = {
-  move() {
-    console.log(`${this.name} is moving`);
-  },
+  for (const prop in obj) {
+    if (obj.hasOwnProperty(prop) && typeof obj[prop] !== 'function') {
+      arrProps.push(prop);
+    }
+  }
 
-  stop() {
-    console.log(`${this.name} stopped`);
-  },
-};
+  return arrProps;
+}
 
 const ship = {
   name: 'Argo',
+  width: 200,
+  howManyPassagers: 3000,
 
   startMachine() {
     console.log(`${this.name} lifting anchor up`);
@@ -24,10 +25,6 @@ const ship = {
     console.log(`${this.name} lifting anchor down`);
   },
 };
-
-Object.setPrototypeOf(ship, vehicle);
 console.log(ship);
-ship.startMachine();
-ship.stopMachine();
-ship.move();
-ship.stop();
+
+console.log(getOwnProps(ship));
