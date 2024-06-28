@@ -6,7 +6,7 @@ const students = [
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-export const studentsBirthdays = students => {
+export const studentsBirthDays = students => {
   return students.reduce((acc, { name, birthDate }) => {
     // const [month] = birthDate.split('/').map(str => Math.floor(Number(str)));
     // const monthText = months[month - 1];
@@ -22,4 +22,4 @@ export const studentsBirthdays = students => {
   }, {});
 };
 
-console.log(studentsBirthdays(students));
+console.log(studentsBirthDays(students));
