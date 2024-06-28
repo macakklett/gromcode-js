@@ -26,7 +26,7 @@ const stateManager = {
       text,
       done: false,
     };
-    this.initialState = [...this.initialState, newTask];
+    this.initialState = [newTask, ...this.initialState];
   },
 };
 
