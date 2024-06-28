@@ -7,19 +7,27 @@ const students = [
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export const studentsBirthDays = students => {
-  return students.reduce((acc, { name, birthDate }) => {
+  const monthStudentsBirthDays = students.reduce((acc, { name, birthDate }) => {
     // const [month] = birthDate.split('/').map(str => Math.floor(Number(str)));
     // const monthText = months[month - 1];
     const month = new Date(birthDate).getMonth();
+    const day = new Date(birthDate).getDate();
     const monthText = months[month];
 
     if (!acc[monthText]) {
       acc[monthText] = [];
     }
-    acc[monthText].push(name);
+    acc[monthText].push({ name, day });
 
     return acc;
   }, {});
+
+  Object.keys(monthStudentsBirthDays).forEach(month => {
+    monthStudentsBirthDays[month].sort((a, b) => a.day - b.day);
+    monthStudentsBirthDays[month] = monthStudentsBirthDays[month].map(el => el.name);
+  });
+
+  return monthStudentsBirthDays;
 };
 
 console.log(studentsBirthDays(students));
