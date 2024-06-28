@@ -15,7 +15,9 @@ export const getDiff = (startDate, endDate) => {
   const start = new Date(startDate).getTime();
   const end = new Date(endDate).getTime();
 
-  return convertMilliseconds(start - end);
+  const diff = Math.abs(start - end);
+
+  return convertMilliseconds(diff);
 };
 
 console.log(getDiff(new Date(2024, 12, 20, 12, 5, 55), new Date(2024, 10, 5, 2, 55, 59)));
