@@ -1,13 +1,13 @@
-const tasks = [
-  { text: 'Buy milk', done: false },
-  { text: 'Pick up Tom from airport', done: false },
-  { text: 'Visit party', done: false },
-  { text: 'Visit doctor', done: true },
-  { text: 'Buy meat', done: true },
-];
+// const tasks = [
+//   { text: 'Buy milk', done: false },
+//   { text: 'Pick up Tom from airport', done: false },
+//   { text: 'Visit party', done: false },
+//   { text: 'Visit doctor', done: true },
+//   { text: 'Buy meat', done: true },
+// ];
 
 const stateManager = {
-  initialState: tasks.map((task, index) => ({ id: index, ...task })),
+  initialState: JSON.parse(localStorage.getItem('tasksList')) || [],
 
   get state() {
     return this.initialState;
@@ -18,6 +18,8 @@ const stateManager = {
     this.initialState = this.initialState.map(task =>
       task.id === taskId ? { ...task, done: !task.done } : task,
     );
+
+    localStorage.setItem('tasksList', JSON.stringify(this.initialState));
   },
 
   addTask(text) {
@@ -27,6 +29,7 @@ const stateManager = {
       done: false,
     };
     this.initialState = [newTask, ...this.initialState];
+    localStorage.setItem('tasksList', JSON.stringify(this.initialState));
   },
 };
 
@@ -79,3 +82,10 @@ const addTask = () => {
 
 listElem.addEventListener('click', setDone);
 createTaskBtn.addEventListener('click', addTask);
+
+const onChangeStorage = e => {
+  stateManager.initialState = JSON.parse(e.newValue);
+  renderTasks(stateManager.state);
+};
+
+window.addEventListener('storage', onChangeStorage);
