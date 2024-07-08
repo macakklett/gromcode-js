@@ -18,6 +18,6 @@ export const requestUserData = userId => {
 
   return pr;
 };
-requestUserData('broken')
+requestUserData('userid777')
   .then(data => console.log(data))
   .catch(error => console.log(error));
