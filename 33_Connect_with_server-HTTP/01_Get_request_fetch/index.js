@@ -12,7 +12,12 @@ const renderUserData = userData => {
 };
 
 const fetchUserData = userName =>
-  fetch(`https://api.github.com/users/${userName}`).then(response => response.json());
+  fetch(`https://api.github.com/users/${userName}`).then(response => {
+    if (!response.ok) {
+      throw new Error('User not found');
+    }
+    return response.json();
+  });
 
 const onClickHandler = () => {
   const searchUserName = nameInput.value;
