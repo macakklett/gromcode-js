@@ -4,7 +4,7 @@ const userLocation = document.querySelector('.user__location');
 const nameInput = document.querySelector('.name-form__input');
 const showButton = document.querySelector('.name-form__btn');
 
-const renderUserData = userData => {
+export const renderUserData = userData => {
   const { avatar_url, name, location } = userData;
   userAvatar.src = avatar_url;
   userName.textContent = name;
@@ -12,12 +12,7 @@ const renderUserData = userData => {
 };
 
 const fetchUserData = userName =>
-  fetch(`https://api.github.com/users/${userName}`).then(response => {
-    if (!response.ok) {
-      throw new Error('User not found');
-    }
-    return response.json();
-  });
+  fetch(`https://api.github.com/users/${userName}`).then(response => response.json());
 
 const onClickHandler = () => {
   const searchUserName = nameInput.value;
