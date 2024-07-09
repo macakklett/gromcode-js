@@ -8,14 +8,15 @@ const renderUserData = userData => {
   const { avatar_url, name, location } = userData;
   userAvatar.src = avatar_url;
   userName.textContent = name;
-  // userLocation.textContent = location ? location : '';
+  userLocation.textContent = location ? location : '';
 };
+
+const fetchUserData = userName =>
+  fetch(`https://api.github.com/users/${userName}`).then(response => response.json());
 
 const onClickHandler = () => {
   const searchUserName = nameInput.value;
-  fetch(`https://api.github.com/users/${searchUserName}`)
-    .then(response => response.json())
-    .then(response => renderUserData(response));
+  fetchUserData(searchUserName).then(response => renderUserData(response));
 };
 
 showButton.addEventListener('click', onClickHandler);
