@@ -4,7 +4,7 @@ const userLocation = document.querySelector('.user__location');
 const nameInput = document.querySelector('.name-form__input');
 const showButton = document.querySelector('.name-form__btn');
 
-export const renderUserData = userData => {
+const renderUserData = userData => {
   const { avatar_url, name, location } = userData;
   userAvatar.src = avatar_url;
   userName.textContent = name;
