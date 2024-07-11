@@ -1,11 +1,22 @@
 const baseURL = 'https://api.github.com/users';
 
 export const fetchUser = async userId => {
-  const userData = await fetch(`${baseURL}/${userId}`);
-  if (userData.ok) {
-    return await userData.json();
+  try {
+    const response = await fetch(`${baseURL}/${userId}`);
+
+    if (response.status === 404) {
+      return null;
+    }
+
+    if (!response.ok) {
+      throw new Error('Failed to get user data');
+    }
+
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    throw new Error('Failed to get user data');
   }
-  throw new Error('Failed to get user data');
 };
 
 fetchUser('facebook')
