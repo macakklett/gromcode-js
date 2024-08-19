@@ -1,7 +1,4 @@
 const form = document.querySelector('.login-form');
-const formInputEmail = document.querySelector('#email');
-const formInputName = document.querySelector('#username');
-const formInputPassword = document.querySelector('#password');
 const buttonSubmit = document.querySelector('.submit-button');
 const baseURL = 'https://668e5a7bbf9912d4c92dedb5.mockapi.io/api/v1/users';
 
@@ -27,12 +24,7 @@ form.addEventListener('input', checkFormValidity);
 const onSubmit = e => {
   e.preventDefault();
 
-  const formData = [...new FormData(form)].reduce(
-    (acc, [prop, value]) => ({ ...acc, [prop]: value }),
-    {},
-  );
-
-  console.log(formData);
+  const formData = Object.fromEntries(new FormData(form));
 
   addUser(formData)
     .then(response => response.json())

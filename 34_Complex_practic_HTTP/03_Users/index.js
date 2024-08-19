@@ -35,9 +35,9 @@ export function deleteUser(userId) {
 }
 
 // examples
-// getUsersList().then(users => {
-//   console.log(users); // array of the user objects [{'id':'1', 'firstName':'Grayce' ... }, {'id':'2', 'firstName':'Ara' ... }, ...]
-// });
+getUsersList().then(users => {
+  console.log(users); // array of the user objects [{'id':'1', 'firstName':'Grayce' ... }, {'id':'2', 'firstName':'Ara' ... }, ...]
+});
 
 // getUserById('2').then(userData => {
 //   console.log(userData); // {'id':'2', 'firstName':'Ara' ... }
