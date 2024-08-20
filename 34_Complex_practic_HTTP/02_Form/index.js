@@ -22,7 +22,7 @@ const onSubmit = e => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: formData,
+    body: JSON.stringify(formData),
   })
     .then(response => response.json())
     .then(data => {
