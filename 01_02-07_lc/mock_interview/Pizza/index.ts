@@ -14,14 +14,14 @@ let nextPizzaId: number = 1;
 let cashInRegister: number = 100;
 let orderId: number = 1;
 
-const menu: Array<Pizza> = [
+const menu: Pizza[] = [
   { id: nextPizzaId++, name: 'Margherita', price: 10 },
   { id: nextPizzaId++, name: 'Papperoni', price: 12 },
   { id: nextPizzaId++, name: 'Hawaiian', price: 11 },
   { id: nextPizzaId++, name: 'Vegie', price: 8 },
 ];
 
-const orderQueue: Array<Order> = [];
+const orderQueue: Order[] = [];
 
 const addNewPizza = (pizzaObj: Omit<Pizza, 'id'>): Pizza => {
   const pizza: Pizza = { id: nextPizzaId++, ...pizzaObj };
